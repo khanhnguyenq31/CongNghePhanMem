@@ -1,0 +1,94 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #e0e0e0;
+}
+.header {
+    background-color: #1A3A7A;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+}
+.header img {
+    height: 50px;
+    vertical-align: middle;
+}
+.header h1 {
+    display: inline;
+    font-size: 24px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+.back-button {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+}
+.content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 500px;
+}
+.content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.content .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    text-align: left;
+}
+.content .input-group label {
+    min-width: 150px;
+    text-align: left;
+    margin-right: 10px;
+}
+.content input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.content button {
+    background-color: #b0c4de;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+.content button:hover {
+    background-color: #a0b4ce;
+}
+.back-arrow {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+}
+.checkmark {
+    font-size: 40px;
+    color: green;
+    margin-bottom: 10px;
+}
