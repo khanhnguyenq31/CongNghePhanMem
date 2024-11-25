@@ -1,0 +1,66 @@
+<div class="report-container">
+    <!-- Sidebar -->
+<app-sidebar></app-sidebar>
+<!-- report-history.component.html -->
+<div class="container">
+    <h1>Lịch sử báo cáo từ người dùng</h1>
+  
+    <div class="table-container">
+      <div class="table-header">
+        <h2>Tất cả lịch sử báo cáo từ người dùng</h2>
+        <div class="table-actions">
+          <div class="search-box">
+            <input type="text" [(ngModel)]="searchText" placeholder="Search">
+          </div>
+          <div class="sort-box">
+            <select [(ngModel)]="sortBy">
+              <option value="Newest">Newest</option>
+            </select>
+          </div>
+        </div>
+      </div>
+  
+      <table>
+        <thead>
+          <tr>
+            <th>Tên sinh viên</th>
+            <th>MSSV</th>
+            <th>Vị trí</th>
+            <th>Nội dung</th>
+            <th>Trạng thái</th>
+            <th>Chi tiết</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let report of reports">
+            <td>{{report.studentName}}</td>
+            <td>{{report.id}}</td>
+            <td>{{report.location}}</td>
+            <td>{{report.content}}</td>
+            <td>
+              <span [class.status-pending]="report.status === 'Chưa giải quyết'"
+                    [class.status-resolved]="report.status === 'Đã giải quyết'">
+                {{report.status}}
+              </span>
+            </td>
+            <td>
+              <button class="details-btn">
+                <i class="details-icon"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <div class="pagination">
+        <button [disabled]="currentPage === 1">&lt;</button>
+        <button [class.active]="currentPage === 1">1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <span>...</span>
+        <button>40</button>
+        <button [disabled]="currentPage === totalPages">&gt;</button>
+      </div>
+    </div>
+  </div>

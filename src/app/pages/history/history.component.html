@@ -1,0 +1,95 @@
+<div class="history-container">
+    <!-- Sidebar -->
+<app-sidebar></app-sidebar>
+<!-- history.component.html -->
+<div class="container">
+    <h1>Lịch sử</h1>
+    
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="users-icon"></i>
+        </div>
+        <div class="stat-info">
+          <div class="stat-label">Tổng số sinh viên</div>
+          <div class="stat-value">
+            {{totalStudents}}
+            <span class="growth-indicator up">↑ {{studentGrowth}}% this month</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="usage-icon"></i>
+        </div>
+        <div class="stat-info">
+          <div class="stat-label">Số lượt sử dụng</div>
+          <div class="stat-value">
+            {{totalUsage}}
+            <span class="growth-indicator down">↓ {{usageDecline}}% this month</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="active-icon"></i>
+        </div>
+        <div class="stat-info">
+          <div class="stat-label">Đang hoạt động</div>
+          <div class="stat-value">{{activeDevices}}</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="table-container">
+      <div class="table-header">
+        <h2>Tất cả sinh viên</h2>
+        <div class="table-actions">
+          <div class="search-box">
+            <input type="text" [(ngModel)]="searchText" placeholder="Search">
+          </div>
+          <div class="sort-box">
+            <select [(ngModel)]="sortBy">
+              <option value="Newest">Newest</option>
+            </select>
+          </div>
+        </div>
+      </div>
+  
+      <table>
+        <thead>
+          <tr>
+            <th>Tên sinh viên</th>
+            <th>MSSV</th>
+            <th>Ngày sử dụng</th>
+            <th>Số tiền</th>
+            <th>Tên thiết bị</th>
+            <th>Số lượng (tờ)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students">
+            <td>{{student.name}}</td>
+            <td>{{student.id}}</td>
+            <td>{{student.useDate}}</td>
+            <td>{{student.amount}}</td>
+            <td>{{student.device}}</td>
+            <td>{{student.quantity}}</td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <div class="pagination">
+        <button [disabled]="currentPage === 1">&lt;</button>
+        <button [class.active]="currentPage === 1">1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <span>...</span>
+        <button>40</button>
+        <button [disabled]="currentPage === totalPages">&gt;</button>
+      </div>
+    </div>
+  </div>

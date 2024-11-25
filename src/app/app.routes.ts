@@ -9,7 +9,9 @@ import { SuccessComponent } from './pages/success/success.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-
+import { HistoryComponent } from './pages/history/history.component';
+import { DeviceComponent } from './pages/device/device.component';
+import { ReportComponent } from './pages/report/report.component';
 
 export const routes: Routes = [
     {path:'', component: BeforeloginComponent},
@@ -21,6 +23,8 @@ export const routes: Routes = [
     {path:'sidebar', component: SidebarComponent},
     {path:'success', component: SuccessComponent},
     {path:'dashboard', component: DashboardComponent},
-    {path:'profile', component: ProfileComponent}
-
+    {path:'profile', component: ProfileComponent},
+    {path:'history', component: HistoryComponent},
+    {path:'device', component: DeviceComponent},
+    {path:'report', component: ReportComponent},
 ];
