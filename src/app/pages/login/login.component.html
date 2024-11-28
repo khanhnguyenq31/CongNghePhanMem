@@ -7,17 +7,17 @@
       </div>
       <span class="close">&times;</span>
     </div>
-    <form>
+    <form (ngSubmit)="onLogin()">
       <div class="form-group">
         <label for="username">Tên tài khoản</label>
-        <input type="text" id="username" name="username" placeholder="Nhập tên tài khoản">
+        <input type="text" id="username" name="username" placeholder="Nhập tên tài khoản" [(ngModel)]="email" required>
       </div>
       <div class="form-group" style="position: relative;">
         <label for="password">Mật khẩu</label>
-        <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
+        <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" [(ngModel)]="password" required>
         <i class="password-toggle fa-regular fa-eye-slash"></i>
       </div>
-      <button type="submit" class="btn-login" routerLink="/homeuser">Đăng nhập</button>
+      <button type="submit" class="btn-login">Đăng nhập</button>
     </form>
     <div class="forgot-password">
       <a href="#">Quên mật khẩu?</a>
