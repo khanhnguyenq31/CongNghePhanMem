@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phần mềm mua giấy in</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Phần mềm mua giấy in</h1>
+    
+    <!-- Hiển thị số trang còn lại -->
+    <div class="section">
+      <label for="remaining-pages">Số trang còn lại: </label>
+      <input type="text" id="remaining-pages" value="100" disabled />
+    </div>
+
+    <!-- Nhập số trang cần mua -->
+    <div class="section">
+      <label for="pages-to-buy">Số trang bạn cần mua (bội số của 10): </label>
+      <input type="number" id="pages-to-buy" />
+      <div id="warning-message" class="warning"></div>
+    </div>
+
+    <!-- Tính tổng tiền -->
+    <div class="section">
+      <label for="total-price">Tổng tiền: </label>
+      <input type="text" id="total-price" value="0 VND" disabled />
+    </div>
+
+    <!-- Phương thức thanh toán -->
+    <div class="section">
+      <label for="payment-method">Phương thức thanh toán: </label>
+      <input type="text" id="payment-method" value="BKPay" disabled />
+    </div>
+
+    <!-- Nút thanh toán -->
+    <button id="pay-now-btn">Thanh toán ngay</button>
+  </div>
+
+  <!-- Phần Xác nhận thanh toán -->
+  <div id="payment-confirmation" class="hidden">
+    <h2>Xác nhận thanh toán</h2>
+    <p id="confirmation-message"></p>
+    <p id="total-confirmation"></p>
+    <p id="payment-method-confirmation"></p>
+    <div id="qr-code" class="qr-code"></div>
+    <p>Vui lòng quét mã QR để hoàn tất quá trình thanh toán và nhận trang in.</p>
+  </div>
+
+  <!-- Phần thanh toán thành công -->
+  <div id="payment-success" class="hidden">
+    <h2>Thanh toán thành công!</h2>
+    <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</p>
+    <p>Dưới đây là chi tiết giao dịch của bạn:</p>
+    <div>
+      <label for="pages-bought">Số trang đã mua:</label>
+      <span id="pages-bought"></span>
+    </div>
+    <div>
+      <label for="total-paid">Tổng tiền thanh toán:</label>
+      <span id="total-paid"></span>
+    </div>
+    <div>
+      <label for="payment-method-details">Phương thức thanh toán:</label>
+      <span id="payment-method-details"></span>
+    </div>
+    <div>
+      <label for="total-pages">Số trang trong tài khoản hiện tại:</label>
+      <span id="total-pages"></span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
