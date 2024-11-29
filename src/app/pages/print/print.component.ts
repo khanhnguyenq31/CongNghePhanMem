@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-print',
@@ -10,9 +11,13 @@ import { Location } from '@angular/common';
   styleUrl: './print.component.css'
 })
 export class PrintComponent {
-  constructor(private location: Location) {}
+  constructor(private location: Location, private router: Router) {}
 
   goBack() {
     this.location.back();
+  }
+
+  goToSuccess() {
+    this.router.navigate(['/success']);
   }
 }
