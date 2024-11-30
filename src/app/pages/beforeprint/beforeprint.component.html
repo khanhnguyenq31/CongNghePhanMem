@@ -9,18 +9,16 @@
     </div>
     <div class="container">
         <div class="form-group">
-            <label for="document-pages">
-             Số trang tài liệu:
-            </label>
-            <input id="document-pages" type="text" value="10"/>
+            
+            
            </div>
            <div class="form-group">
             <label for="available-pages">
              Số trang khả dụng:
             </label>
-            <input id="available-pages" type="text" value="2500"/>
+            <input id="available-pages" type="text" value="50"/>
             <span>
-             Mua thêm trang ?
+            <a href="/buy">Mua thêm trang?</a>
             </span>
            </div>
            <div class="printer-info">
@@ -38,10 +36,9 @@
            </div>
            <div>
             <p>Số trang: {{ numberOfPages }}</p>
-            <button (click)="onProceedToPrint()">Tiếp tục in</button>
            </div>
            <div class="buttons">
-            <button class="cancel-button">
+            <button class="cancel-button" routerLink="/homeuser">
              HỦY BỎ
             </button>
             <button class="continue-button" routerLink="/print">
