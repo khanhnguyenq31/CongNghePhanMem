@@ -11,9 +11,15 @@ import { RouterLink } from '@angular/router';
   styleUrl: './success.component.css'
 })
 export class SuccessComponent {
-  constructor(private location: Location) {}
-
   goBack() {
-    this.location.back();
+    // Logic to navigate back
+    window.history.back(); // Ví dụ: quay lại trang trước
+  }
+
+  printInfo: any;
+
+  constructor() {
+    this.printInfo = JSON.parse(localStorage.getItem('printInfo') || '{}');
+    console.log(`Tên file: ${this.printInfo.filename}, Số trang: ${this.printInfo.pageCount}`);
   }
 }

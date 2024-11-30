@@ -11,13 +11,30 @@ import { Router } from '@angular/router';
   styleUrl: './print.component.css'
 })
 export class PrintComponent {
-  constructor(private location: Location, private router: Router) {}
-
-  goBack() {
-    this.location.back();
+  printInfo: any;
+  fileContent: string | null;
+  constructor(private router: Router) {
+    this.printInfo = JSON.parse(localStorage.getItem('printInfo') || '{}');
+    this.fileContent = localStorage.getItem('fileContent');
   }
 
-  goToSuccess() {
+  goBack() {
+    // Logic to navigate back
+    window.history.back(); // Ví dụ: quay lại trang trước
+  }
+
+  onPrint() {
+    // Logic để in tài liệu
+    const uploadedFile = JSON.parse(localStorage.getItem('uploadedFile') || '{}');
+    const printInfo = {
+        filename: uploadedFile.filename,
+        pageCount: uploadedFile.numberOfPages,
+        copies: 1,
+        printerName: 'Printer1',
+        startTime: new Date().toLocaleString(),
+        endTime: new Date().toLocaleString()
+    };
+    localStorage.setItem('printInfo', JSON.stringify(printInfo));
     this.router.navigate(['/success']);
   }
 }

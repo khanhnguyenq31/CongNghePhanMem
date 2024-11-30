@@ -11,6 +11,10 @@
      <h2>
       Upload files
      </h2>
+     <form (ngSubmit)="onUpload()">
+      <input type="file" (change)="onFileSelected($event)" required />
+      <button type="button" (click)="onUpload()">Upload</button>
+     </form>
      <div class="upload-box">
       <i class="fas fa-cloud-upload-alt">
       </i>
@@ -27,7 +31,7 @@
        Tối đa có thể tải lên 5 file.
       </p>
      </div>
-     <button class="upload-button" routerLink="/beforeprint">
+     <button class="upload-button">
       UPLOAD FILES
      </button>
     </div>

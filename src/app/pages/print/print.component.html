@@ -68,13 +68,21 @@
               </label>
              </div>
              <div>
-              <button (click)="goToSuccess()">Print</button>
+              <p>Xem trước tài liệu...</p>
+              <button (click)="onPrint()">In</button>
              </div>
             </div>
            </div>
            <div class="main-content">
             <div class="page-preview">
-             <!-- Placeholder for page preview -->
+                <p>File: {{ printInfo.filename }}</p>
+                <br>
+                <p>Số trang: {{ printInfo.pageCount }}</p>
+                <!-- Placeholder cho xem trước tài liệu -->
+                 <!--
+                <p>Nội dung file:</p>
+                <pre>{{ fileContent }}</pre>  Hiển thị nội dung file -->
+                
             </div>
             <div class="pagination">
              <span>

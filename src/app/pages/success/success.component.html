@@ -18,27 +18,27 @@
             </h2>
             <div class="input-group">
                 <label>Tên file:</label>
-                <input readonly type="text" value="CNPM_123.pdf"/>
+                <input readonly type="text" value="{{ printInfo.filename }}"/>
             </div>
             <div class="input-group">
                 <label>Số trang đã in:</label>
-                <input readonly type="text" value="1"/>
+                <input readonly type="text" value="{{ printInfo.pageCount }}"/>
             </div>
             <div class="input-group">
                 <label>Số lượng bản sao:</label>
-                <input readonly type="text" value="1"/>
+                <input readonly type="text" value="{{ printInfo.copies }}"/>
             </div>
             <div class="input-group">
                 <label>Máy in:</label>
-                <input readonly type="text" value="C6101001, Canon 100a, 101/C06/CS2"/>
+                <input readonly type="text" value="{{ printInfo.printerName }}"/>
             </div>
             <div class="input-group">
                 <label>Thời gian bắt đầu in:</label>
-                <input readonly type="text" value="9:00, 26/10/2024"/>
+                <input readonly type="text" value="{{ printInfo.startTime }}"/>
             </div>
             <div class="input-group">
                 <label>Thời gian kết thúc in:</label>
-                <input readonly type="text" value="9:03, 26/10/2024"/>
+                <input readonly type="text" value="{{ printInfo.endTime }}"/>
             </div>
             <button routerLink="/homeuser">
              Thoát
