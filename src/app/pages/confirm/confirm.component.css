@@ -1,0 +1,55 @@
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #142D65; /* Đường viền xanh lá */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    font-size: 24px;
+    color: #142D65; /* Màu xanh lá */
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    color: #100700; /* Màu cam */
+    margin-bottom: 15px;
+  }
+  
+  p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .qr-code {
+    margin: 20px 0;
+  }
+  
+  .qr-code img {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  button {
+    background-color: #142D65; /* Màu cam */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #e65c00;
+  }
+  

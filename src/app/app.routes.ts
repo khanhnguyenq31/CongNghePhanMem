@@ -12,6 +12,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { DeviceComponent } from './pages/device/device.component';
 import { ReportComponent } from './pages/report/report.component';
+import { BuyComponent } from './pages/buy/buy.component';
+import { ConfirmComponent } from './pages/confirm/confirm.component';
+import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
 
 export const routes: Routes = [
     {path:'', component: BeforeloginComponent},
@@ -27,4 +30,7 @@ export const routes: Routes = [
     {path:'history', component: HistoryComponent},
     {path:'device', component: DeviceComponent},
     {path:'report', component: ReportComponent},
+    {path:'buy', component: BuyComponent},
+    {path:'confirm', component: ConfirmComponent},
+    {path:'payment-success', component: PaymentSuccessComponent},
 ];
