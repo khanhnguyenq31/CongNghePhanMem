@@ -30,7 +30,7 @@ export class PrintComponent {
         filename: uploadedFile.filename,
         pageCount: uploadedFile.numberOfPages,
         copies: 1,
-        printerName: 'Printer1',
+        printerName: 'Toshiba 5505AC',
         startTime: new Date().toLocaleString(),
         endTime: new Date().toLocaleString()
     };

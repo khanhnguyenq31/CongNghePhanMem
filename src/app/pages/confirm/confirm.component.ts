@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
 export class ConfirmComponent {
   numberOfPages: number = history.state.numberOfPages || 0;
   totalAmount: number = history.state.totalAmount || 0;
-
+  balance: number = history.state.balance || 0;
   constructor(private router: Router) {}
 
   goToSuccess() {
-    this.router.navigate(['/payment-success'], { state: { numberOfPages: this.numberOfPages, totalAmount: this.totalAmount } });
+    this.router.navigate(['/payment-success'], { state: { balance: this.balance, numberOfPages: this.numberOfPages, totalAmount: this.totalAmount } });
   }
 }

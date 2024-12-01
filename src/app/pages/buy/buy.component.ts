@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-buy',
   standalone: true,
@@ -13,9 +14,24 @@ export class BuyComponent {
   numberOfPages: number = 0;
   totalAmount: number = 0;
   showError: boolean = false;
+  balance: number = 0; // Khai báo biến balance
+  constructor(private router: Router, private authService: AuthService) {}
 
-  constructor(private router: Router) {}
-
+  ngOnInit() {
+    this.fetchBalance();
+  }
+  
+  fetchBalance() {
+    this.authService.getBalance().subscribe(
+      (response) => {
+        this.balance = response.balance;
+      },
+      (error) => {
+        console.error('Lỗi khi lấy số dư:', error);
+      }
+    );
+  }
+    
   calculateTotal() {
     if (this.numberOfPages % 10 === 0) {
       this.showError = false;
@@ -25,8 +41,8 @@ export class BuyComponent {
       this.totalAmount = 0;
     }
   }
-
+  
   goToConfirm() {
-    this.router.navigate(['/confirm'], { state: { numberOfPages: this.numberOfPages, totalAmount: this.totalAmount } });
+    this.router.navigate(['/confirm'], { state: { balance: this.balance, numberOfPages: this.numberOfPages, totalAmount: this.totalAmount } });
   }
 }

@@ -39,4 +39,11 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
   }
+
+  // Phương thức mới để lấy số dư
+  getBalance(): Observable<any> {
+    // Lấy Stu_ID từ localStorage hoặc từ thông tin đăng nhập
+    const Stu_ID = localStorage.getItem('Stu_ID'); 
+    return this.http.post(`${this.apiUrl}/user/getBalance`, { Stu_ID });
+  }
 }

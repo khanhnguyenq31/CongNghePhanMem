@@ -24,6 +24,8 @@ export class LoginComponent {
         // Xử lý thành công
         console.log('Đăng nhập thành công', response);
         localStorage.setItem('token', response.token); // Lưu token vào localStorage
+        localStorage.setItem('Stu_ID', response.Stu_ID);
+        //console.log('hello ', response.Stu_ID);
         debugger;
         this.authService.setSession(response.token, response.role);
         // Điều hướng đến trang chỉ định

@@ -12,13 +12,13 @@ export class PaymentSuccessComponent {
   numberOfPages: number;
   totalAmount: number;
   currentPages: number;
-
+  balance: number;
   constructor() {
     // Lấy dữ liệu từ trang trước (Trang 2)
-    const state = history.state as { numberOfPages: number; totalAmount: number };
-
+    const state = history.state as { balance: number; numberOfPages: number; totalAmount: number };
+    this.balance = state?.balance || 0;
     this.numberOfPages = state?.numberOfPages || 0;
     this.totalAmount = state?.totalAmount || 0;
-    this.currentPages = 50 + this.numberOfPages; // Giả sử ban đầu có 50 trang
+    this.currentPages = this.balance + this.numberOfPages; // Giả sử ban đầu có 50 trang
   }
 }

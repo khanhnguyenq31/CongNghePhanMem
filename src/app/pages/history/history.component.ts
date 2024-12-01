@@ -20,25 +20,25 @@ interface Student {
   styleUrl: './history.component.css'
 })
 export class HistoryComponent implements OnInit {
-  totalStudents: number = 5423;
-  totalUsage: number = 1893;
-  activeDevices: number = 189;
+  totalStudents: number = 9;
+  totalUsage: number = 8;
+  activeDevices: number = 2;
   students: Student[] = [];
   currentPage: number = 1;
   totalPages: number = 40;
   searchText: string = '';
   sortBy: string = 'Newest';
   studentGrowth: number = 16;
-  usageDecline: number = 1;
+  usageDecline: number = 17;
 
   ngOnInit() {
     this.students = Array(8).fill(null).map(() => ({
-      name: 'Quang Khánh',
-      id: '223123456',
-      useDate: '1/1/2024',
-      amount: '100.000 VND',
+      name: 'huy',
+      id: '2211211',
+      useDate: '1/12/2024',
+      amount: '6.000 VND',
       device: 'Toshiba 5505AC',
-      quantity: 50
+      quantity: 10
     }));
   }
 
