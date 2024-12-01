@@ -17,4 +17,26 @@ export class AuthService {
     }
     return this.http.post(url, { email, password });
   }
+
+  // Lưu token và role sau khi đăng nhập
+  setSession(token: string, role: string) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('role', role);
+  }
+
+  // Kiểm tra đăng nhập
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+  // Lấy vai trò người dùng
+  getUserRole(): string | null {
+    return localStorage.getItem('role');
+  }
+
+  // Đăng xuất
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+  }
 }

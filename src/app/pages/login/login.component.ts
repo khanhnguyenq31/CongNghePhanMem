@@ -25,6 +25,7 @@ export class LoginComponent {
         console.log('Đăng nhập thành công', response);
         localStorage.setItem('token', response.token); // Lưu token vào localStorage
         debugger;
+        this.authService.setSession(response.token, response.role);
         // Điều hướng đến trang chỉ định
         if (response.role === 'admin') {
           this.router.navigate(['/dashboard']);

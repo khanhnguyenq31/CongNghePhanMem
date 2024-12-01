@@ -15,22 +15,41 @@ import { ReportComponent } from './pages/report/report.component';
 import { BuyComponent } from './pages/buy/buy.component';
 import { ConfirmComponent } from './pages/confirm/confirm.component';
 import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {path:'', component: BeforeloginComponent},
     {path:'login', component: LoginComponent},
-    {path: 'homeuser',component: HomeuserComponent},
-    {path:'upload', component: UploadComponent},
+    {path: 'homeuser',component: HomeuserComponent, 
+        canActivate: [AuthGuard] },
+    {path:'upload', component: UploadComponent, 
+        canActivate: [AuthGuard] },
     {path:'beforeprint', component: BeforeprintComponent},
-    {path:'print', component: PrintComponent},
-    {path:'sidebar', component: SidebarComponent},
-    {path:'success', component: SuccessComponent},
-    {path:'dashboard', component: DashboardComponent},
-    {path:'profile', component: ProfileComponent},
-    {path:'history', component: HistoryComponent},
-    {path:'device', component: DeviceComponent},
-    {path:'report', component: ReportComponent},
-    {path:'buy', component: BuyComponent},
-    {path:'confirm', component: ConfirmComponent},
-    {path:'payment-success', component: PaymentSuccessComponent},
+    {path:'print', component: PrintComponent, 
+        canActivate: [AuthGuard] },
+    {path:'sidebar', component: SidebarComponent, 
+        canActivate: [AuthGuard] },
+    {path:'success', component: SuccessComponent, 
+        canActivate: [AuthGuard] },
+    {path:'dashboard', component: DashboardComponent, 
+        canActivate: [AuthGuard] },
+    {path:'profile', component: ProfileComponent, 
+        canActivate: [AuthGuard] },
+    {path:'history', component: HistoryComponent, 
+        canActivate: [AuthGuard] },
+    {path:'device', component: DeviceComponent, 
+        canActivate: [AuthGuard] },
+    {path:'report', component: ReportComponent, 
+        canActivate: [AuthGuard] },
+    {path:'buy', component: BuyComponent, 
+        canActivate: [AuthGuard] },
+    {path:'confirm', component: ConfirmComponent, 
+        canActivate: [AuthGuard] },
+    {path:'payment-success', component: PaymentSuccessComponent, 
+        canActivate: [AuthGuard] },
+        {
+            path: '', 
+            redirectTo: '/login', 
+            pathMatch: 'full'
+          }
 ];
