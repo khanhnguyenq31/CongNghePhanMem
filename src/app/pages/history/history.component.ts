@@ -32,13 +32,13 @@ export class HistoryComponent implements OnInit {
   usageDecline: number = 17;
 
   ngOnInit() {
-    this.students = Array(8).fill(null).map(() => ({
+    this.students = Array(1).fill(null).map(() => ({
       name: 'huy',
       id: '2211211',
       useDate: '1/12/2024',
       amount: '6.000 VND',
       device: 'Toshiba 5505AC',
-      quantity: 10
+      quantity: 110
     }));
   }
 
