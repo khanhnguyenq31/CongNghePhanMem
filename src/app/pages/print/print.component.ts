@@ -13,9 +13,11 @@ import { Router } from '@angular/router';
 export class PrintComponent {
   printInfo: any;
   fileContent: string | null;
+  selectedPrinter: string | null;
   constructor(private router: Router) {
     this.printInfo = JSON.parse(localStorage.getItem('printInfo') || '{}');
     this.fileContent = localStorage.getItem('fileContent');
+    this.selectedPrinter = localStorage.getItem('selectedPrinter'); // Lấy thông tin máy in đã chọn
   }
 
   goBack() {
@@ -30,7 +32,7 @@ export class PrintComponent {
         filename: uploadedFile.filename,
         pageCount: uploadedFile.numberOfPages,
         copies: 1,
-        printerName: 'Toshiba 5505AC',
+        printerName: this.selectedPrinter,
         startTime: new Date().toLocaleString(),
         endTime: new Date().toLocaleString()
     };

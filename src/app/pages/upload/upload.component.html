@@ -11,18 +11,17 @@
      <h2>
       Upload files
      </h2>
-     <form (ngSubmit)="onUpload()">
-      <input type="file" (change)="onFileSelected($event)" required />
-     </form>
+     
      <div class="upload-box">
       <i class="fas fa-cloud-upload-alt">
       </i>
       <p>
        Kéo &amp; thả tập hoặc
-       <a href="#">
-        Duyệt
-       </a>
-      </p>
+      
+       <form (ngSubmit)="onUpload()">
+        <input type="file" (change)="onFileSelected($event)" required />
+       </form>
+      
       <p>
        Định dạng hỗ trợ: JPG, PNG, GIF, MP4, PDF, PSD, AI, Word, PPT
       </p>

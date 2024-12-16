@@ -29,7 +29,7 @@
   
     <div class="table-container">
       <div class="table-header">
-        <h2>Tất cả thiết bị</h2>
+        <h2>Danh sách máy in</h2>
         <div class="table-actions">
           <div class="search-box">
             <input type="text" [(ngModel)]="searchText" placeholder="Search">
@@ -45,31 +45,20 @@
       <table>
         <thead>
           <tr>
-            <th>Tên thiết bị</th>
-            <th>Thương hiệu</th>
-            <th>Vị trí</th>
-            <th>Thời gian lắp đặt</th>
-            <th>Tắt/Bật</th>
-            <th>Chi tiết</th>
+            <th>PrinterID</th>
+            <th>Model</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Available</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let device of devices">
-            <td>{{device.name}}</td>
-            <td>{{device.brand}}</td>
-            <td>{{device.location}}</td>
-            <td>{{device.installDate}}</td>
-            <td>
-              <label class="switch">
-                <input type="checkbox" [checked]="device.isActive">
-                <span class="slider"></span>
-              </label>
-            </td>
-            <td>
-              <button class="details-btn">
-                <i class="details-icon"></i>
-              </button>
-            </td>
+          <tr *ngFor="let printer of printers">
+            <td>{{ printer.PrinterID }}</td>
+            <td>{{ printer.model }}</td>
+            <td>{{ printer.description }}</td>
+            <td>Campus: {{ printer.location.campus }}, Building: {{ printer.location.building }}, Room: {{ printer.location.room }}</td>
+            <td>{{ printer.available ? 'Có sẵn' : 'Không có sẵn' }}</td>
           </tr>
         </tbody>
       </table>

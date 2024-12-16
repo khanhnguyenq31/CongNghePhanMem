@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
-
+import { PrinterService } from '../../services/printer.service';
 interface Device {
   name: string;
   brand: string;
@@ -18,25 +18,33 @@ interface Device {
   styleUrl: './device.component.css'
 })
 export class DeviceComponent implements OnInit {
-  totalDevices: number = 189;
-  activeDevices: number = 189;
+  totalDevices: number = 0;
+  activeDevices: number = 0;
   devices: Device[] = [];
   currentPage: number = 1;
   totalPages: number = 40;
   searchText: string = '';
   sortBy: string = 'Newest';
-
-  ngOnInit() {
-    // Initialize dummy data
-    this.devices = Array(8).fill(null).map(() => ({
-      name: 'Toshiba 5505AC',
-      brand: 'Toshiba',
-      location: 'H6-100',
-      installDate: '1/1/2024',
-      isActive: Math.random() > 0.5
-    }));
+  printers: any[] = [];
+  constructor(private printerService: PrinterService) { }
+  
+  ngOnInit(): void {
+    this.loadPrinters();
   }
 
+  loadPrinters() {
+    this.printerService.getAllPrinters().subscribe(response => {
+      if (response.success) {
+        this.printers = response.printers;
+        this.totalDevices = this.printers.length; // Tổng số máy in
+        this.activeDevices = this.printers.filter(printer => printer.available).length; // Tổng số máy in có sẵn
+      } else {
+        console.error('Failed to load printers');
+      }
+    }, error => {
+      console.error('Error fetching printers:', error);
+    });
+  }
   onPageChange(page: number) {
     this.currentPage = page;
   }

@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { PrinteravailableService } from '../../services/printeravailable.service';
 @Component({
   selector: 'app-beforeprint',
   standalone: true,
@@ -10,12 +11,13 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './beforeprint.component.html',
   styleUrl: './beforeprint.component.css'
 })
-export class BeforeprintComponent {
-
+export class BeforeprintComponent implements OnInit {
+  availablePrinters: any[] = [];
+  selectedPrinter: string = '';
   numberOfPages: number = 0;
   filename: string = '';
   balance: number = 0; // Khai báo biến balance
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router, private authService: AuthService, private printerService: PrinteravailableService) {
     const uploadedFile = JSON.parse(localStorage.getItem('uploadedFile') || '{}');
     this.numberOfPages = uploadedFile.numberOfPages; // Lấy số trang từ localStorage
     this.filename = uploadedFile.filename; // Lưu tên file
@@ -38,8 +40,26 @@ export class BeforeprintComponent {
   
   ngOnInit() {
     this.fetchBalance();
+    this.loadAvailablePrinters();
   }
   
+  loadAvailablePrinters() {
+    this.printerService.getAvailablePrinters().subscribe(response => {
+      if (response.success) {
+        this.availablePrinters = response.availablePrinters;
+      }
+    });
+  }
+
+  onPrinterSelect(event: Event) {
+    const selectElement = event.target as HTMLSelectElement; // Ép kiểu event.target
+    if (selectElement && selectElement.value) { // Kiểm tra xem selectElement có phải là null không
+        const selectedPrinter = JSON.parse(selectElement.value); // Chuyển đổi giá trị thành đối tượng
+        this.selectedPrinter = selectedPrinter.PrinterID + '-' + selectedPrinter.description;
+        localStorage.setItem('selectedPrinter', this.selectedPrinter); // Lưu thông tin máy in đã chọn
+    }
+  }
+
   fetchBalance() {
     this.authService.getBalance().subscribe(
       (response) => {

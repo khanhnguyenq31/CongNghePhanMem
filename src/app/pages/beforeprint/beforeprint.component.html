@@ -16,23 +16,24 @@
             <label for="available-pages">
              Số trang khả dụng:
             </label>
-            <input id="available-pages" type="text" value="{{ balance+110}}"/>
+            <input id="available-pages" type="text" value="{{ balance}}"/>
             <span>
             <a href="/buy">Mua thêm trang?</a>
             </span>
            </div>
            <div class="printer-info">
-            <h2>
-             PRINTER 1
-            </h2>
-            <p>
-            Toshiba 5505AC
-            </p>
             <p class="status">
-             READY
-             <i class="fas fa-check-circle">
-             </i>
-            </p>
+              READY
+              <i class="fas fa-check-circle">
+              </i>
+             </p>
+            <label for="printers">Chọn máy in:</label>
+            <select id="printers" (change)="onPrinterSelect($event)">
+                <option *ngFor="let printer of availablePrinters" [value]="printer | json">
+                    {{ printer.PrinterID }} - {{ printer.description }}
+                </option>
+            </select>
+            
            </div>
            <div>
             <p>Số trang: {{ numberOfPages }}</p>
