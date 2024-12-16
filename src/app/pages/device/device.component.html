@@ -26,6 +26,50 @@
         </div>
       </div>
     </div>
+
+    <div class="device-container">
+      <h1>Device Management</h1>
+      
+      <button (click)="showAddPrinterForm()">Add Printer</button>
+      <button (click)="showUpdatePrinterForm()">Update Printer</button>
+      <button (click)="showDeletePrinterForm()">Delete Printer</button>
+    
+      <!-- Add Printer Form -->
+      <div *ngIf="isAddPrinterVisible">
+        <h2>Add Printer</h2>
+        <input [(ngModel)]="printerID" placeholder="Printer ID" />
+        <input [(ngModel)]="printerName" placeholder="Printer Name" />
+        <input [(ngModel)]="brand" placeholder="Brand" />
+        <input [(ngModel)]="model" placeholder="Model" />
+        <input [(ngModel)]="description" placeholder="Description" />
+        <input [(ngModel)]="location.campus" placeholder="Campus" />
+        <input [(ngModel)]="location.building" placeholder="Building" />
+        <input [(ngModel)]="location.room" placeholder="Room" />
+        <label>
+          Available:
+          <input type="checkbox" [(ngModel)]="available" />
+        </label>
+        <button (click)="addPrinter()">Submit</button>
+      </div>
+    
+      <!-- Update Printer Form -->
+      <div *ngIf="isUpdatePrinterVisible">
+        <h2>Update Printer</h2>
+        <input [(ngModel)]="printerID" placeholder="Printer ID" />
+        <label>
+          Available:
+          <input type="checkbox" [(ngModel)]="available" />
+        </label>
+        <button (click)="updatePrinter()">Submit</button>
+      </div>
+    
+      <!-- Delete Printer Form -->
+      <div *ngIf="isDeletePrinterVisible">
+        <h2>Delete Printer</h2>
+        <input [(ngModel)]="printerID" placeholder="Printer ID" />
+        <button (click)="deletePrinter()">Delete</button>
+      </div>
+    </div>
   
     <div class="table-container">
       <div class="table-header">

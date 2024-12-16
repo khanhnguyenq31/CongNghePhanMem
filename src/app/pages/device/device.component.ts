@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { PrinterService } from '../../services/printer.service';
-interface Device {
-  name: string;
-  brand: string;
-  location: string;
-  installDate: string;
-  isActive: boolean;
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
+interface ApiResponse {
+    success: boolean;
+    message: string;
+    printers?: any[];
 }
+
 @Component({
   selector: 'app-device',
   standalone: true,
@@ -20,14 +22,25 @@ interface Device {
 export class DeviceComponent implements OnInit {
   totalDevices: number = 0;
   activeDevices: number = 0;
-  devices: Device[] = [];
   currentPage: number = 1;
   totalPages: number = 40;
   searchText: string = '';
   sortBy: string = 'Newest';
   printers: any[] = [];
-  constructor(private printerService: PrinterService) { }
+
+  printerID: string = '';
+  printerName: string = '';
+  brand: string = '';
+  model: string = '';
+  description: string = '';
+  location: any = { campus: '', building: '', room: '' };
+  available: boolean = true;
+  constructor(private printerService: PrinterService, private http: HttpClient, private router: Router) { }
   
+  isAddPrinterVisible: boolean = false;
+  isUpdatePrinterVisible: boolean = false;
+  isDeletePrinterVisible: boolean = false;
+
   ngOnInit(): void {
     this.loadPrinters();
   }
@@ -48,4 +61,65 @@ export class DeviceComponent implements OnInit {
   onPageChange(page: number) {
     this.currentPage = page;
   }
+
+  addPrinter() {
+    const printerData = {
+      PrinterID: this.printerID,
+      printerName: this.printerName,
+      brand: this.brand,
+      model: this.model,
+      description: this.description,
+      location: this.location,
+      available: this.available
+    };
+
+    this.http.post<ApiResponse>('http://localhost:3000/api/printer/add', printerData).subscribe(response => {
+      console.log(response);
+      alert(response.message);
+    });
+  }
+
+  updatePrinter() {
+    const updateData = {
+      PrinterID: this.printerID,
+      available: this.available
+    };
+
+    this.http.post<ApiResponse>('http://localhost:3000/api/printer/update', updateData).subscribe(response => {
+      console.log(response);
+      alert(response.message);
+    });
+  }
+
+  deletePrinter() {
+    const deleteData = {
+      PrinterID: this.printerID
+    };
+
+    this.http.post<ApiResponse>('http://localhost:3000/api/printer/delete', deleteData).subscribe(response => {
+      console.log(response);
+      alert(response.message);
+    });
+  }
+
+  
+
+showAddPrinterForm() {
+  this.isAddPrinterVisible = true;
+  this.isUpdatePrinterVisible = false;
+  this.isDeletePrinterVisible = false;
+}
+
+showUpdatePrinterForm() {
+  this.isAddPrinterVisible = false;
+  this.isUpdatePrinterVisible = true;
+  this.isDeletePrinterVisible = false;
+}
+
+showDeletePrinterForm() {
+  this.isAddPrinterVisible = false;
+  this.isUpdatePrinterVisible = false;
+  this.isDeletePrinterVisible = true;
+}
+
 }
