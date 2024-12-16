@@ -254,3 +254,38 @@
   .pagination span {
     color: #666;
   }
+  
+  .update-form {
+    background: #f0f4f8; /* Màu nền nhẹ */
+    border-radius: 8px; /* Bo góc */
+    padding: 20px; /* Khoảng cách bên trong */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+  }
+  
+  .btn-update {
+    background-color: #2563eb; /* Màu nền cho nút cập nhật */
+    color: white; /* Màu chữ */
+    border: none; /* Không viền */
+    border-radius: 4px; /* Bo góc */
+    padding: 10px 15px; /* Khoảng cách bên trong */
+    cursor: pointer; /* Con trỏ khi di chuột */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+  }
+  
+  .btn-update:hover {
+    background-color: #1d4ed8; /* Màu nền khi di chuột */
+  }
+  
+  .btn-cancel {
+    background-color: #e5e7eb; /* Màu nền cho nút hủy */
+    color: #333; /* Màu chữ */
+    border: none; /* Không viền */
+    border-radius: 4px; /* Bo góc */
+    padding: 10px 15px; /* Khoảng cách bên trong */
+    cursor: pointer; /* Con trỏ khi di chuột */
+    margin-left: 10px; /* Khoảng cách giữa hai nút */
+  }
+  
+  .btn-cancel:hover {
+    background-color: #d1d5db; /* Màu nền khi di chuột */
+  }

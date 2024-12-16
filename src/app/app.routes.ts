@@ -16,15 +16,19 @@ import { BuyComponent } from './pages/buy/buy.component';
 import { ConfirmComponent } from './pages/confirm/confirm.component';
 import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ReportuserComponent } from './pages/reportuser/reportuser.component';
 
 export const routes: Routes = [
-    {path:'', component: BeforeloginComponent},
+    {path:'', component: BeforeloginComponent},    
     {path:'login', component: LoginComponent},
     {path: 'homeuser',component: HomeuserComponent, 
         canActivate: [AuthGuard] },
     {path:'upload', component: UploadComponent, 
         canActivate: [AuthGuard] },
-    {path:'beforeprint', component: BeforeprintComponent},
+    {path:'reportuser', component: ReportuserComponent, 
+        canActivate: [AuthGuard] },
+    {path:'beforeprint', component: BeforeprintComponent,
+        canActivate: [AuthGuard] },
     {path:'print', component: PrintComponent, 
         canActivate: [AuthGuard] },
     {path:'sidebar', component: SidebarComponent, 

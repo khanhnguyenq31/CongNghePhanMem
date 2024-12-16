@@ -46,7 +46,8 @@ export class AuthGuard implements CanActivate {
       '/payment', 
       '/payment-success',
       '/confirm',
-      '/buy'
+      '/buy' ,
+      '/reportuser'
     ];
 
     // Lấy route hiện tại
